@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="plugin"
+	group="finder"
+	version="3.4"
+	method="upgrade">
+	<name>PLG_FINDER_ISSUES</name>
+	<author>Constantin Romankiewicz</author>
+	<creationDate>2016</creationDate>
+	<license>Apache License 2.0 (see LICENSE)</license>
+	<authorEmail>constantin@zweiiconkram.de</authorEmail>
+	<authorUrl>www.zweiiconkram.de</authorUrl>
+	<version>0.0.1</version>
+	<description>PLG_FINDER_ISSUES_XML_DESCRIPTION</description>
+
+	<files>
+		<filename plugin="issues">issues.php</filename>
+	</files>
+
+	<config>
+		<fields name="params">
+			<fieldset name="basic">
+				<field
+					name="target"
+					type="list"
+					label="PLG_FINDER_ISSUES_FIELD_TARGET_LABEL"
+					description="PLG_FINDER_ISSUES_FIELD_TARGET_DESC"
+					default="0"
+					filter="int"
+				>
+					<option value="0">JBROWSERTARGET_PARENT</option>
+					<option value="1">JBROWSERTARGET_NEW</option>
+				</field>
+			</fieldset>
+		</fields>
+	</config>
+
+	<languages folder="language">
+		<language tag="de-DE">de-DE/de-DE.plg_finder_issues.ini</language>
+		<language tag="de-DE">de-DE/de-DE.plg_finder_issues.sys.ini</language>
+		<language tag="en-GB">en-GB/en-GB.plg_finder_issues.ini</language>
+		<language tag="en-GB">en-GB/en-GB.plg_finder_issues.sys.ini</language>
+	</languages>
+</extension>
