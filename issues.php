@@ -109,8 +109,9 @@ class PlgFinderIssues extends FinderIndexerAdapter
 		$item->route = 'index.php?' . JUri::buildQuery($router->preprocess($url));
 
 		$item->addTaxonomy('Type', 'Issue');
-		$item->addTaxonomy('Project', $item->getElement('project_name')); // TODO: translation?
+		$item->addTaxonomy('Project', $item->getElement('project_name'));
 		$item->addTaxonomy('Author', $item->getElement('author'));
+		$item->addInstruction(FinderIndexer::META_CONTEXT, 'status_name');
 
 		// Index the item.
 		$this->indexer->index($item);
@@ -128,7 +129,7 @@ class PlgFinderIssues extends FinderIndexerAdapter
 	protected function getListQuery($query = null)
 	{
 		$query = parent::getListQuery($query);
-		
+
 		$query->select('a.id, a.title, a.text, a.project_id, a.version, a.created, a.author_id, a.status, a.classification')
 			->from($this->table . ' AS a')
 			->select('p.name AS project_name')
@@ -136,7 +137,9 @@ class PlgFinderIssues extends FinderIndexerAdapter
 			->select('cl.access AS access')
 			->leftJoin('#__monitor_issue_classifications AS cl ON cl.id = a.classification')
 			->select('u.name AS author')
-			->leftJoin('#__users AS u ON u.id = a.author_id');
+			->leftJoin('#__users AS u ON u.id = a.author_id')
+			->select('s.name AS status_name')
+			->leftJoin('#__monitor_status AS s ON s.id = a.status');
 
 		return $query;
 	}

@@ -3,7 +3,7 @@
 	group="finder"
 	version="3.4"
 	method="upgrade">
-	<name>PLG_FINDER_ISSUES</name>
+	<name>plg_finder_issues</name>
 	<author>Constantin Romankiewicz</author>
 	<creationDate>2016</creationDate>
 	<license>Apache License 2.0 (see LICENSE)</license>
